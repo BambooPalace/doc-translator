@@ -1,0 +1,9 @@
+torch
+protobuf
+sentencepiece
+transformers
+docx
+pdf2docx
+docx2pdf
+tqdm
+flask
