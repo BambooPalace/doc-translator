@@ -5,7 +5,11 @@ from tqdm import tqdm
 import re
 import torch
 
-from app.model import translate
+try:
+    from .model import translate
+except:
+    #To enable relative imports on Colab
+    from model import translate
 
 #language to model recognized type
 support_langs = {'arabic': 'ar_AR', 'czech': 'cs_CZ', 'german': 'de_DE', 'english': 'en_XX', 'spanish': 'es_XX', 'estonian': 'et_EE', 
@@ -110,8 +114,13 @@ def translate_doc(fp, in_lang, out_lang, output_fp='', batch=10):
         output_fp = f"{fp.split('.')[0]}_{out_lang}.docx"
     doc.save(output_fp)
     if fp[-3:] == 'pdf':
-        convert(output_fp, output_fp.replace('docx', 'pdf'))
-        output_fp = output_fp.replace('docx', 'pdf')
+        try:            
+            convert(output_fp, output_fp.replace('docx', 'pdf'))
+            output_fp = output_fp.replace('docx', 'pdf')
+        except Exception as e:
+            #docx2pdf requires local installation of word
+            print(e)
+
     msg = f'Translation finished, please find the translated file at "{output_fp}".'
     print(msg)
     return msg

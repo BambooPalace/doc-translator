@@ -14,7 +14,7 @@ Arabic (ar_AR), Czech (cs_CZ), German (de_DE), English (en_XX), Spanish (es_XX),
 #### Run
 The code automatically runs on GPU if GPU is available, and it run much faster on GPU compared to locally run on CPU.
 You are recommended to clone the code in a Google Colab notebook, choose GPU as accelerator, and run the code.
-- Local run
+- Local run (CPU)
 ```
 python3 -m venv env
 source env/bin/activate
@@ -23,12 +23,11 @@ python3 run.py
 #sample url with simle sample document 'jd.pdf'
 http://127.0.0.1:8000/translate?source_file=samples/jd.pdf&source_lang=english&target_lang=chinese
 ```
-- Google Colab
+- Google Colab (with GPU)
 ```
-python3 -m venv env
-source env/bin/activate
+git clone https://github.com/BambooPalace/doc-translator.git
+cd doc-translator
 pip3 install -r requirements.txt
-python3 run.py
-#sample url with simle sample document 'jd.pdf'
-http://127.0.0.1:8000/translate?source_file=samples/jd.pdf&source_lang=english&target_lang=chinese
+#run default scripts with complex sample document 'apple.pdf', GPU now enables faster runtime
+python3 app/translator.py
 ```
