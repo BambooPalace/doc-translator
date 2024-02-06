@@ -118,4 +118,4 @@ def translate_doc(fp, in_lang, out_lang, output_fp='', batch=10):
 
 
 if __name__ == '__main__':
-    translate_doc('files/resume.pdf', 'english', 'chinese', batch=1)
+    translate_doc('samples/apple.pdf', 'english', 'chinese')
