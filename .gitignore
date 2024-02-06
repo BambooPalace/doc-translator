@@ -1,3 +1,5 @@
 env/
 files/
 *.ipynb
+sample/*.docx
+.DS_Store
